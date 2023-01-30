@@ -1,23 +1,23 @@
 import  express from "express"
 import {Server} from 'http'
+import mainRoutes from './routes/index'
+import path from "path"
+import mustache from "mustache-express"
+
 
 const server = express()
 
+server.set('view engine', 'mustache')
 
+server.use(express.static(path.join(__dirname,"../public")))
 
-server.get('/1',(req,res) =>{
-    res.send("pega na minha pomba")
-})
-server.get('/2',(req,res) =>
-{res.send("pega na minha pombaaaaaa")
-})
-server.get('/3/:slug',(req,res) =>{
-    let slug: string = req.params.slug
-    res.send(`notici/a; ${slug}`)
-})
-server.get('/voo/:origem-:destino',(req,res) =>{
-    let {origem,destino} =req.params
-    res.send(`Procurando voos de ${origem} até ${destino}`)
+server.set('views',path.join(__dirname,'views'))
+
+server.engine('mustache',mustache())
+
+server.use(mainRoutes)
+server.use((req,res)=>{
+    res.status(404).send("pagina não encontrada")
 })
 
 server.listen(3000)
