@@ -6,12 +6,10 @@ const router = Router()
 router.get('/idade', (req: Request, res:Response)=>{
     let idade: number = 18
     let mostraridade: boolean = false
-
-
     if(idade >= 18){
         mostraridade = true
     }
-    res.render("idade",{
+    res.render("pages/idade",{
         nome:"João otavio",
         mostraridade,
         products:[
@@ -24,20 +22,13 @@ router.get('/idade', (req: Request, res:Response)=>{
 })
 
 router.get('/',(req:Request, res: Response)=>{
-   /* 
-    let pessoa ={
-        name: 'João Otavio',
-        idade: 18
-    }
-    
-    */
-    res.render('home',{
+    res.render('pages/home',{
        nome:"João Otavio",
        shoWelcome: false
     })
 })
 router.get('/contato',(req:Request, res: Response)=>{
-    res.render('contato')
+    res.render('pages/contato')
 })
 router.get('/1',(req,res) =>{
     res.send("pega na minha pomba")
@@ -53,7 +44,5 @@ router.get('/voo/:origem-:destino',(req,res) =>{
     let {origem,destino} =req.params
     res.send(`Procurando voos de ${origem} até ${destino}`)
 })
-
-
 
 export default router
