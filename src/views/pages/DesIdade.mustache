@@ -1,0 +1,19 @@
+{{>partials/header}}
+
+<h2>Qual seu nome?</h2>
+
+<form method="post" action="/DesIdade">
+    <h2> Ano que Nasceu </h2>
+    <p></p>
+    <input type="number" name="AnoQueNasceu"><br/>
+    <input type="submit" value="Enviar"/>
+</form>
+<p></p>
+
+{{#AnoQueNasceu}}
+
+<P> Sua Idade é {{idade}} anos </P>
+
+{{/AnoQueNasceu}}
+
+{{>partials/footer}}

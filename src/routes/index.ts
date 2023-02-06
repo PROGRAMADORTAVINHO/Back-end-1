@@ -21,12 +21,51 @@ router.get('/idade', (req: Request, res:Response)=>{
     
 })
 
+router.get('/nome',(req:Request, res: Response)=>{
+
+    let nome : string = req.query.nome as string
+
+    res.render('pages/nome',{
+        nome
+    })
+})
+router.get('/atividade',(req:Request, res: Response)=>{
+
+    let nome : string = req.query.nome as string
+    let endereco : string = req.query.endereco as string
+    let telefone : string = req.query.telefone as string
+    let idade : number = req.query.idade as unknown as number 
+
+
+    res.render('pages/atividade',{
+        nome,telefone,idade,endereco
+    })
+})
+router.get('/DesIdade',(req:Request, res:Response)=>{
+    res.render("pages/DesIdade")
+})
+router.post('/DesIdade',(req:Request, res: Response)=>{
+
+    let AnoQueNasceu : number = req.body.AnoQueNasceu as unknown as number
+
+    let idade : number
+    idade = 2023 - AnoQueNasceu
+
+    res.render('pages/DesIdade',{
+        AnoQueNasceu,idade
+    })
+})
+
+
+
 router.get('/',(req:Request, res: Response)=>{
     res.render('pages/home',{
        nome:"João Otavio",
        shoWelcome: false
     })
 })
+
+
 router.get('/contato',(req:Request, res: Response)=>{
     res.render('pages/contato')
 })
