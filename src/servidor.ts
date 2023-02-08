@@ -3,8 +3,9 @@ import {Server} from 'http'
 import mainRoutes from './routes/index'
 import path from "path"
 import mustache from "mustache-express"
+import dotenv from 'dotenv'
 
-
+dotenv.config()
 const server = express()
 
 server.set('view engine', 'mustache')
@@ -21,4 +22,4 @@ server.use((req,res)=>{
 })
 server.use(express.urlencoded({extended:true}))
 
-server.listen(3000)
+server.listen(process.env.PORT)
