@@ -1,6 +1,6 @@
 import {Router, Request, Response} from "express";
 import { request } from "http";
-import *  as homeController from "../controllers/homecontroller"
+import *  as homeController from "../controllers/homeController"
 import *  as userController from "../controllers/userController"
 
 const router = Router()
